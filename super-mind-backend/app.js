@@ -8,9 +8,8 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Middlewares
 app.use(cors());
-app.use(express.json()); // Built-in JSON parser
+app.use(express.json());
 
 class LangflowClient {
   constructor(baseURL, applicationToken) {
@@ -25,10 +24,6 @@ class LangflowClient {
   async post(endpoint, body, headers = {}) {
     const url = `${this.baseURL}${endpoint}`;
     const mergedHeaders = { ...this.defaultHeaders, ...headers };
-
-    // console.log("Request URL:", url);
-    // console.log("Request Headers:", mergedHeaders);
-    // console.log("Request Body:", body);
 
     try {
       const response = await fetch(url, {
@@ -90,8 +85,6 @@ class LangflowClient {
         tweaks,
       });
 
-      // console.log("Init Response:", initResponse);
-
       if (!stream && initResponse?.outputs && initResponse.outputs[0]) {
         const flowOutputs = initResponse.outputs[0];
         const firstComponentOutputs = flowOutputs.outputs[0];
@@ -99,9 +92,6 @@ class LangflowClient {
         // Now, properly extract the message
         const message =
           firstComponentOutputs?.results?.text?.text || "No message found";
-
-        // console.log("Flow Output:", message); // Log the final message
-
         return message;
       } else {
         return "Stream initiated";
@@ -146,7 +136,6 @@ app.post("/runFlow", async (req, res) => {
       stream,
     });
 
-    // Send the response to the frontend
     res.status(200).send({ message: response });
   } catch (error) {
     console.error("Error:", error.message);
