@@ -8,8 +8,8 @@
     "dev": "nodemon app.js",
     "start": "node app.js",
     "test": "jest",
-    "build": "esbuild app.js --bundle --outfile=dist/bundle.js --minify --platform=node",
-    "postbuild": "npm install esbuild"
+    "prebuild": "npm install esbuild",
+    "build": "esbuild app.js --bundle --outfile=dist/bundle.js --minify --platform=node"
   },
   "keywords": [],
   "author": "",
