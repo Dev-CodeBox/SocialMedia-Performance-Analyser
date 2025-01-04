@@ -4,11 +4,12 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "postinstall": "npm install --production=false",
+    "postinstall": "npm install",
     "dev": "nodemon app.js",
     "start": "node app.js",
     "test": "jest",
-    "build": "esbuild app.js --bundle --outfile=dist/bundle.js --minify --platform=node"
+    "build": "esbuild app.js --bundle --outfile=dist/bundle.js --minify --platform=node",
+    "postbuild": "npm install esbuild"
   },
   "keywords": [],
   "author": "",
