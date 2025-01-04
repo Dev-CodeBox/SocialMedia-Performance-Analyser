@@ -4,6 +4,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "postinstall": "npm install --production=false",
     "dev": "nodemon app.js",
     "start": "node app.js",
     "test": "jest",
@@ -25,5 +26,8 @@
     "esbuild": "^0.24.2",
     "webpack": "^5.97.1",
     "webpack-cli": "^6.0.1"
+  },
+  "engines": {
+    "node": ">=16.0.0"
   }
 }
