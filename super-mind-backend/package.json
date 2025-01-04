@@ -4,7 +4,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "postinstall": "npm install",
+    "postinstall": "npm install esbuild && npm install --legacy-peer-deps",
     "dev": "nodemon app.js",
     "start": "node app.js",
     "test": "jest",
