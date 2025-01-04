@@ -21,13 +21,16 @@ function ChatComponent() {
     setLoading(true);
 
     try {
-      const response = await fetch("http://localhost:4000/runFlow", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ inputValue: selectedType }), // Send selectedType as inputValue
-      });
+      const response = await fetch(
+        "https://socialmedia-performance-analyser.onrender.com/runFlow",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ inputValue: selectedType }), // Send selectedType as inputValue
+        }
+      );
 
       const data = await response.json(); // Assuming the backend sends back the message
       console.log("Backend Response:", data);
